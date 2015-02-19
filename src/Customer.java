@@ -30,8 +30,6 @@ public class Customer {
 
 			Rental each = (Rental) rentals.nextElement();
 
-			double thisAmount = amountFor(each);
-
 			// add frequent renter points
 			frequentRenterPoints++;
 
@@ -40,8 +38,9 @@ public class Customer {
 				frequentRenterPoints++;
 
 			// show figures for this rental
-			result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(thisAmount) + "\n";
-			totalAmount += thisAmount;
+			result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge())
+					+ "\n";
+			totalAmount += each.getCharge();
 		}
 
 		// add footer lines
@@ -49,10 +48,6 @@ public class Customer {
 		result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points";
 
 		return result;
-	}
-
-	private double amountFor(Rental aRental) {
-		return aRental.getCharge();
 	}
 
 }
